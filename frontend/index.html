@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Student Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Student Management System</h1>
+        <ul class="nav-links">
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="view-students.html">View Students</a></li>
+            <li><a href="add-student.html">Add Student</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Dashboard</h2>
+        <p>Welcome to the Student Management System. Manage your students effectively.</p>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Total Students</h3>
+                <p id="total-students">0</p>
+                <a href="view-students.html" class="btn btn-primary mt-1">View All</a>
+            </div>
+            <div class="card">
+                <h3>Quick Actions</h3>
+                <div class="mt-1">
+                    <a href="add-student.html" class="btn btn-success">Add New Student</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const students = await fetchStudents();
+                document.getElementById('total-students').textContent = students.length;
+            } catch (error) {
+                console.error('Error fetching dashboard stats:', error);
+            }
+        });
+    </script>
+</body>
+</html>
