@@ -5,7 +5,6 @@ import com.sms.service.StudentService;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,7 +13,9 @@ import java.net.InetSocketAddress;
 import java.nio.file.Files;
 
 public class Main {
-    private static final int PORT = 8080;
+    private static final int PORT = Integer.parseInt(
+    System.getenv().getOrDefault("PORT", "8080")
+);
     private static final String FRONTEND_DIR = "frontend";
 
     public static void main(String[] args) throws IOException {
